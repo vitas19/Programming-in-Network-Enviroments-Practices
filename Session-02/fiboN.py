@@ -8,7 +8,7 @@ def fibon(n):
     elif n == 1:
         return b
     else:
-        for i in range(1,n):
+        for i in range(2,n):
             c = a + b
             a = b
             b = c
