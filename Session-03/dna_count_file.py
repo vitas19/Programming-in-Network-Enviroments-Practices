@@ -21,3 +21,5 @@ print("A: ", count_a)
 print("C: ", count_c)
 print("T: ", count_t)
 print("G: ", count_g)
+
+
