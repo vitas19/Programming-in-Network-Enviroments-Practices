@@ -1,0 +1,3 @@
+Machine	           Interface	    Date	         Place	     IP
+mobile           	Wifi			March 2020       Home        192.168.1.18
+Laptop      	    Wifi			March 2020       Home        10.0.2.15
