@@ -1,7 +1,7 @@
 import socket
-import termcolor
+#import termcolor
 
-IP = "212.128.253.151"
+IP = "10.0.2.15"
 PORT = 8080
 
 # Step 1: creating the socket
@@ -22,7 +22,7 @@ client_list = []
 
 print("Server is configured")
 
-while True:
+while number_connections < 5:
 
     try:
         # Step 4: wait for client to connect
@@ -40,7 +40,7 @@ while True:
         msg = msg_raw.decode()
 
         print("Message received: ", end="")
-        termcolor.cprint(msg, "green")
+        #termcolor.cprint(msg, "green")
 
         # -- Send a response message to the client
         response = "ECHO: " + msg + "\n"
@@ -48,3 +48,8 @@ while True:
         cs.send(response.encode())
 
         cs.close()
+
+print("The following clients has connected to the server: ")
+for i,c in enumerate(client_list):
+    print(f"Client {i}: {c}")
+ls.close()
