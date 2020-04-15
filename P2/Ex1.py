@@ -6,11 +6,11 @@ EXERCISE = 1
 print(f"-----| Practice {PRACTICE}, Exercise {EXERCISE} |------")
 
 # -- Parameters of the server to talk to
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 PORT = 8080
 
 # -- Create a client object
-c = Client(IP, PORT)
+c = Client()
 
 # -- Test the ping method
 c.ping()
