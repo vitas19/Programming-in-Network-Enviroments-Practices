@@ -1,7 +1,7 @@
 import socket
 
 PORT = 8080
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 
 while True:
     # Ask the user for a message

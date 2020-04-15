@@ -1,7 +1,7 @@
 import socket
 
 PORT = 8080
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 MAX_OPEN_REQUESTS = 50
 
 counter = 0
@@ -20,9 +20,11 @@ try:
 
         msg = clientsocket.recv(2048)
         print("Message from client: ", end="")
+        print(msg.decode("utf-8"))
 
         message = "Hello!"
-        send_bytes = str.encode(send_bytes)
+        send_bytes = str.encode(message)
+        clientsocket.send(send_bytes)
 
         clientsocket.close()
 
