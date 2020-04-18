@@ -1,7 +1,7 @@
 import socket
-#import termcolor
+import termcolor
 
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 PORT = 8080
 
 # Step 1: creating the socket
@@ -34,7 +34,7 @@ while True:
         msg = msg_raw.decode()
 
         print("Message received: ", end="")
-        #termcolor.cprint(msg, "green")
+        termcolor.cprint(msg, "green")
 
         # -- Send a response message to the client
         response = "ECHO: " + msg + "\n"
