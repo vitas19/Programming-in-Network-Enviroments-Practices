@@ -1,6 +1,7 @@
 from Client0 import Client
+from Seq1 import Seq
 
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 PORT = 8080
 
 FOLDER = "../Session-04/"
@@ -8,7 +9,7 @@ GENE = "FRAT1"
 
 c = Client(IP, PORT)
 print(c)
-s = Seq().read_fasta(FOLDER + GENE)
+s = Seq("").read_fasta(FOLDER + GENE)
 bases = str(s)
 print(f"Gene {GENE}: {bases}")
 LENGTH = 10

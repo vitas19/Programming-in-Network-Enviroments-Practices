@@ -2,7 +2,7 @@ import socket
 import termcolor
 
 PORT = 8080
-IP = "192.168.1.45"
+IP = "127.0.0.1"
 MAX_OPEN_REQUESTS = 50
 
 number_con = 0
@@ -19,6 +19,7 @@ try:
         print("CONNECTION: {}. From the IP: {}".format(number_con, address))
         msg = clientsocket.recv(2048)
         print("Message from client: ", end="")
+        termcolor.cprint(msg.decode("utf-8"), "green")
         message = "Message received from the Server"
         send_bytes = str.encode(message)
         clientsocket.send(send_bytes)

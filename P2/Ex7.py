@@ -1,6 +1,7 @@
 from Client0 import Client
+from Seq1 import Seq
 
-IP = "10.0.2.15"
+IP = "127.0.0.1"
 PORT = 8080
 
 FOLDER = "../Session-04/"
@@ -10,7 +11,7 @@ c1 = Client(IP, PORT)
 c2 = Client(IP, PORT + 1)
 print(c1)
 print(c2)
-s = Seq().read_fasta(FOLDER + GENE)
+s = Seq("").read_fasta(FOLDER + GENE)
 bases = str(s)
 print(f"Gene {GENE}: {bases}")
 LENGTH = 10
@@ -21,7 +22,7 @@ for i in range(10):
     frag = bases[i*LENGTH:(i+1)*LENGTH]
     print(f"Fragment {i+1}: {frag}")
     msg = f"Fragment {i+1}: {frag}"
-    if i%2:
+    if i % 2:
         c2.talk(msg)
     else:
         c1.talk(msg)

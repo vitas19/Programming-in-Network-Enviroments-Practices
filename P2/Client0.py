@@ -2,12 +2,12 @@ import socket
 import termcolor
 
 class Client:
-    def _init_(self, ip, port):
-        self.ip = ip
-        self.port = port
-
     def ping(self):
         print("OK!")
+
+    def __init__(self, ip, port):
+        self.ip = ip
+        self.port = port
 
     def _str_(self):
         return f"Connection to server at {self.ip}, port: {self.port}"
