@@ -1,40 +1,43 @@
-import pathlib
+from pathlib import Path
+
 
 class Seq:
-    def __init__(self, strbases):
-        if strbases == '':
+    NULL = "NULL"
+    ERROR = "ERROR"
+
+    def __init__(self, strbases=NULL):
+        if strbases == self.NULL:
             print("NULL Seq created!")
             self.strbases = "NULL"
-        else:
-            for e in strbases:
-                if e not in ["A", "C", "T", "G"]:
-                    print("INVALID seq")
-                    self.strbases = "ERROR"
-                    return
-            print("New sequence created!")
-            self.strbases = strbases
+            return
+
+        if not self.valid_str:
+            self.starbases = self.ERROR
+            print("INVALID seq")
+            return
+
+        print("New sequence created!")
+        self.strbases = strbases
 
     def __str__(self):
         return self.strbases
 
-    def len(self):
-        for e in self.strbases:
-            if e not in ["A", "C", "T", "G"]:
-                return 0
-        return len(self.strbases)
+    @staticmethod
+    def valid_str(strbases):
+        valid_bases = ['A', 'C', 'T', 'G']
+        for b in strbases:
+            if b not in valid_bases:
+                return False
+        return True
 
-    def count_base(self, base):
-        count_base = 0
-        if self.strbases == '':
+    def len(self):
+        if self.strbases in [self.NULL, self.ERROR]:
             return 0
         else:
-            for e in self.strbases:
-                if e not in ["A", "C", "T", "G"]:
-                    return 0
-                else:
-                    if e in base:
-                        count_base += 1
-            return count_base
+            return len(self.strbases)
+
+    def count_base(self, base):
+        return self.strbases.count(base)
 
     def count(self):
         bases = ["A", "C", "T", "G"]
@@ -45,44 +48,23 @@ class Seq:
         return dictionary
 
     def reverse(self):
-        rev_seq = ''
-        if self.strbases == 'NULL':
+        if self.strbases in [self.NULL, self.ERROR]:
             return self.strbases
         else:
-            for e in self.strbases[::-1]:
-                if e not in ["A", "C", "T", "G"]:
-                    rev_seq = 'ERROR'
-                    return rev_seq
-
-                else:
-                    rev_seq += e
-        return (rev_seq)
+            return self.strbases[::-1]
 
     def complement(self):
-        comp_seq = ""
-        if self.strbases == 'NULL':
+        if self.strbases in [self.NULL, self.ERROR]:
             return self.strbases
         else:
-            for e in self.strbases:
-                if e not in ["A", "C", "T", "G"]:
-                    comp_seq = 'ERROR'
-                    return comp_seq
-                else:
-                    if e in "A":
-                        comp_seq += "T"
-                    if e in "T":
-                        comp_seq += "A"
-                    if e in "C":
-                        comp_seq += "G"
-                    if e in "G":
-                        comp_seq += "C"
-            return (comp_seq)
+            comp_base = {"A": "T", "T": "A", "C": "G", "G": "C"}
+            comp_seq = ""
+            for b in self.strbases:
+                comp_seq += comp_base[b]
+            return comp_seq
 
     def read_fasta(self, filename):
-        file_lines = pathlib.Path(filename).read_text().split("\n")
+        file_lines = Path(filename).read_text().split("\n")
         body = (file_lines[1:])
-        self.strbases = ''.join(body)
-        return (self)
-
-
-    pass
+        self.strbases = "".join(body)
+        return self
