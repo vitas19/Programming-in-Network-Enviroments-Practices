@@ -6,7 +6,6 @@ from pathlib import Path
 IP = "127.0.0.1"
 PORT = 8080
 
-
 def get_resource(path):
     if path == "/info/A":
         response = Path("A.html").read_text()
