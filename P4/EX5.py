@@ -2,6 +2,7 @@ import socket
 import termcolor
 from pathlib import Path
 
+
 # -- Server network parameters
 IP = "127.0.0.1"
 PORT = 8080

@@ -6,6 +6,7 @@ from pathlib import Path
 IP = "127.0.0.1"
 PORT = 8080
 
+
 def get_resource(path):
     response = ""
     if path == "/info/C":
