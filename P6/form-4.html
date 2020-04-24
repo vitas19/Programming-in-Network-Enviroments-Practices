@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Practice 6</title>
+  </head>
+  <body>
+    <h1>SEQ2 server</h1>
+    <p>Access to the Server</p>
+    <br>
+    <form action="ping" method="get">
+      Is the server alive? <input type="submit" value="PING">
+    </form>
+    <br>
+    <form action="get" method="get">
+        Select sequence number:
+        <select name="n">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+        </select>
+        <input type="submit" value="GET">
+    </form>
+    <br>
+    <form action="gene" method="get">
+        Select the name of the gene
+        <select name="name">
+            <option value="U5">U5</option>
+            <option value="ADA">ADA</option>
+            <option value="FRAT1">FRAT1</option>
+            <option value="FXN">RXN</option>
+            <option value="RNU6_269P">RNU6_269P</option>
+        </select>
+        <input type="submit" value="Gene">
+    </form>
+    <br>
+    <form action="operation" method="get">
+        Write a sequence: <input type="text" name="seq">
+        <br>
+        Select operation:
+        <input type="radio" name="op" value="info" checked>Information
+        <input type="radio" name="op" value="comp">Complementary
+        <input type="radio" name="op" value="rev">Reverse
+        <br>
+        Perform operation:
+        <input type="submit" value="Operate">
+    </form>
+  </body>
+</html>
