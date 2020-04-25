@@ -18,11 +18,7 @@ SEQ_GET = [
 ]
 
 FOLDER = "../Session-04/"
-EXT = ".txt"
 
-
-# Class with our Handler. It is a called derived from BaseHTTPRequestHandler
-# It means that our class inheritates all his methods and properties
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
@@ -146,18 +142,16 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 result = s.reverse()
             else:
                 length = s.len()
-                result = f"""
-                <p>Total length: {length}</p>
-                """
                 count_bases = []
                 count_percentages = []
                 for e in bases:
                     count = s.count_base(e)
                     percentage = round(s.count_base(e) * (100 / s.len()), 2)
-                    count_bases = count_bases.append(count)
-                    count_percentages = count_percentages.append(percentage)
+                    count_bases.append(count)
+                    count_percentages.append(percentage)
 
                 result = f"""
+                <p>Total length: {length}</p>
                 <p>A: {count_bases[0]} ({count_percentages[0]}%)</p>
                 <p>C: {count_bases[1]} ({count_percentages[1]}%)</p>
                 <p>G: {count_bases[2]} ({count_percentages[2]}%)</p>
