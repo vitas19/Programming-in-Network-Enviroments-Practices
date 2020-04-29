@@ -11,6 +11,6 @@ while True:
     # Establish the connection to the server (IP, PORT)
     s.connect((IP, PORT))
     # Send data
-    s.send(str.encode(m))
+    s.send(str.encode(message))
     # Closing the socket
     s.close()
