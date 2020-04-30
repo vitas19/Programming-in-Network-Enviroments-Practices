@@ -48,9 +48,15 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         elif first_argument == "/listSpecies":
             ENDPOINT = "info/species"
             species = client_get_species(ENDPOINT + PARAMS)["species"]
-            second_argument = arguments[1]
-            third_argument = second_argument.split("=")[1]
 
+            # This is in order that this http://localhost:8080/listSpecies works
+            if len(arguments) > 1:
+                second_argument = arguments[1]
+                third_argument = second_argument.split("=")[1]
+            else:
+                third_argument = ""
+
+            # If no number is specified
             if third_argument == "":
                 contents = f"""
                                 <!DOCTYPE html>
@@ -60,8 +66,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                     <title>List of species</title>
                                 </head>
                                 <body style="background-color: lightblue">
-                                <p>Total number of species is: 267 </p>
-                                <p>The limit you have selected is:{267}</p>
+                                <p>Total number of species is: {len(species)} </p>
+                                <p>The limit you have selected is:{len(species)}</p>
                                 <p>The names of the species are:</p>
                                 </body></html>
                                 """
@@ -69,10 +75,12 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 for element in species:
                     contents += f"""<p> · {element["common_name"]} </p>"""
 
-            elif int(third_argument) > 267:
+            # If more than existant is written it is an error
+            elif int(third_argument) > len(species):
                 contents = Path('Error.html').read_text()
                 error_code = 404
 
+            # If the number is in the range
             else:
                 contents = f"""
                                 <!DOCTYPE html>
@@ -82,7 +90,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                     <title>List of species</title>
                                 </head>
                                 <body style="background-color: lightblue">
-                                <p>Total number of species is: 267 </p>
+                                <p>Total number of species is: {len(species)} </p>
                                 <p>The limit you have selected is:{third_argument}</p>
                                 <p>The names of the species are:</p>
                                 </body></html>
@@ -92,10 +100,20 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 for element in species[:int(third_argument)]:
                     contents += f"""<p> · {element["common_name"]} </p>"""
 
-
         elif first_argument == "/karyotype":
+            ENDPOINT = "info/assembly/"
+            karyotype = client_get_species(ENDPOINT + PARAMS)["karyotype"]
+            print(karyotype)
+            second_argument = arguments[1]
+            third_argument = second_argument.split("=")[1]
+            if third_argument in karyotype:
+                for element in karyotype:
+                    contents += f"""<p> · {element["common_name"]} </p>"""
 
-            error_code = 200
+
+            else:
+                contents = Path('Error.html').read_text()
+                error_code = 404
 
         elif first_argument == "/chromosomeLength":
 
