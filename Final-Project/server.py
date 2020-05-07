@@ -15,11 +15,11 @@ def species_get(endpoint):
     except ConnectionRefusedError:
         print("ERROR! Cannot connect to the Server")
         exit()
-    r1 = conn.getresponse()
-    print(f"Response received!: {r1.status} {r1.reason}\n")
-    data = r1.read().decode("utf-8")
-    data1 = json.loads(data)
-    return data1
+    response = conn.getresponse()
+    print(f"Response received!: {response.status} {response.reason}\n")
+    data = response.read().decode("utf-8")
+    data_1 = json.loads(data)
+    return data_1
 
 
 PORT = 8080
