@@ -102,7 +102,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 contents = Path('Error.html').read_text()
                 error_code = 404
 
-
         elif first_argument == "/karyotype":
             ENDPOINT = "info/assembly/"
             second_argument = arguments[1]
@@ -144,13 +143,18 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             third_argument, fourth_argument = second_argument.split("&")
             species = third_argument.split("=")[1]
             chromosome = fourth_argument.split("=")[1]
+
+            # If both or any entry is left in blank
             if species == "" or chromosome == "":
                 contents = Path('Error.html').read_text()
                 error_code = 404
+
+            # If none of the entries are in blank
             else:
+
+                # To make sure if an incorrect value is selected, the error page is seen
                 try:
                     chromo_len = species_get(ENDPOINT + species + PARAMS)["top_level_region"]
-                    print(chromo_len)
                     contents = ""
                     for element in chromo_len:
                         if element["coord_system"] == "chromosome":
@@ -165,8 +169,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                             <body style="background-color: lightpink">
                                             </body></html>
                                             """
-                                contents += f"""<p> The length of the chromosome {chromosome} of the {species} is: {element["length"]} </p>"""
+                                contents += f"""<p> The length of the chromosome {chromosome} of the {species} is: {element["length"]} </p> """
                     error_code = 200
+
+                    # When the chromosome introduced is not correct
                     if contents == "":
                         contents = Path('Error.html').read_text()
 
@@ -174,6 +180,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     contents = Path('Error.html').read_text()
                     error_code = 404
 
+        # If the endpoint is not correct
         else:
             contents = Path('Error.html').read_text()
             error_code = 404
