@@ -1,6 +1,7 @@
 def seq_ping():
     print("OK!")
 
+
 def seq_read_fasta(filename):
     from pathlib import Path
     file_contents = Path(filename).read_text()
@@ -9,6 +10,7 @@ def seq_read_fasta(filename):
     seq_dna = seq_dna.replace("\n", "")
     return seq_dna
 
+
 def seq_len(filename):
     from pathlib import Path
     file_contents = Path(filename).read_text()
@@ -16,6 +18,7 @@ def seq_len(filename):
     seq_dna = file_contents[index_start + 1:]
     seq_dna = seq_dna.replace("\n", "")
     return len(seq_dna)
+
 
 def seq_count_base(seq, base):
     from pathlib import Path
@@ -27,7 +30,8 @@ def seq_count_base(seq, base):
     for character in seq_dna:
         if character == base:
             count_base += 1
-    return (count_base)
+    return count_base
+
 
 def seq_count(seq):
     from pathlib import Path
@@ -44,7 +48,8 @@ def seq_count(seq):
                 count_base += 1
                 d[character] = count_base
         count_base = 0
-    return (d)
+    return d
+
 
 def seq_reverse(seq):
     from pathlib import Path
@@ -54,6 +59,7 @@ def seq_reverse(seq):
     seq_dna = seq_dna.replace("\n", "")[0:20]
     rev_dna = seq_dna[::-1]
     return seq_dna, rev_dna
+
 
 def seq_complement(seq):
     from pathlib import Path
@@ -73,6 +79,7 @@ def seq_complement(seq):
             compl_seq = compl_seq + "C"
     return seq_dna, compl_seq
 
+
 def process_genes(seq):
     from pathlib import Path
     file_contents = Path(seq).read_text()
@@ -91,4 +98,3 @@ def process_genes(seq):
     max_value = max(d.values())
     max_keys = [k for k, v in d.items() if v == max_value]
     return max_value, max_keys
-
