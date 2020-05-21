@@ -54,13 +54,12 @@ while True:
 
         elif comp1 == "INFO":
             seq0 = Seq(comp2)
-            response = ""
             termcolor.cprint("INFO", 'green')
-            print(f"Sequence: {comp2}")
-            print(f"Total length: {seq0.len()}")
+            response = f"Sequence: {comp2} \n"
+            response += f"Total length: {seq0.len()} \n"
             for e in bases:
                 percentage = round(seq0.count_base(e) * (100 / seq0.len()), 2)
-                print(e, ":", seq0.count_base(e), "(", percentage, "% )", "\n")
+                response += f"{e}: {seq0.count_base(e)} ({percentage}%) \n"
 
         elif comp1 == "COMP":
             seq0 = Seq(comp2)
