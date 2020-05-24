@@ -183,16 +183,23 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     error_code = 404
 
         elif first_argument == "/geneSeq":
+            # The try is for make sure that the value is in the endpoint
             try:
                 ENDPOINT = "xrefs/symbol/homo_sapiens/"
                 second_argument = arguments[1]
                 third_argument = second_argument.split("=")[1]
+
+                # If nothing is inserted, an error is thrown
                 if third_argument == "":
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If a number is introduced its not correct, throws an error
                 elif third_argument.isdigit() is True:
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If everything is correct
                 else:
                     sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
                     contents = f"""
@@ -216,16 +223,23 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 404
 
         elif first_argument == "/geneInfo":
+            # The try is for make sure that the value is in the endpoint
             try:
                 ENDPOINT = "xrefs/symbol/homo_sapiens/"
                 second_argument = arguments[1]
                 third_argument = second_argument.split("=")[1]
+
+                # If nothing is inserted, an error is thrown
                 if third_argument == "":
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If a number is introduced its not correct, throws an error
                 elif third_argument.isdigit() is True:
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If everything is correct
                 else:
                     sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
                     contents = f"""
@@ -255,16 +269,23 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 404
 
         elif first_argument == "/geneCalc":
+            # The try is for make sure that the value is in the endpoint
             try:
                 ENDPOINT = "xrefs/symbol/homo_sapiens/"
                 second_argument = arguments[1]
                 third_argument = second_argument.split("=")[1]
+
+                # If nothing is inserted, an error is thrown
                 if third_argument == "":
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If a number is introduced its not correct, throws an error
                 elif third_argument.isdigit() is True:
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If everything is correct
                 else:
                     sequence = species_get(ENDPOINT + third_argument + PARAMS)[0]
                     contents = f"""
@@ -295,6 +316,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 error_code = 404
 
         elif first_argument == "/geneList":
+            # The try is for make sure that the value is in the endpoint
             try:
                 ENDPOINT = "overlap/region/homo_sapiens/"
                 second_argument = arguments[1]
@@ -306,15 +328,22 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                 human_chromosomes = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15",
                                      "16", "17", "18", "19", "20", "21", "22", "X", "x", "Y", "y", "MT", "mt"]
 
+                # If nothing is inserted, an error is thrown
                 if chromo == "" or start == "" or end == "":
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If the chromosome is not an human chromosome is an error
                 elif chromo not in human_chromosomes:
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If a number is introduced its not correct, throws an error
                 elif start.isdigit() is False or end.isdigit() is False:
                     contents = Path('Error.html').read_text()
                     error_code = 404
+
+                # If everything is correct
                 else:
                     sequence = species_get(ENDPOINT + chromo + ":" + start + "-" + end + PARAM)
                     contents = f"""
