@@ -338,426 +338,314 @@ http://localhost:8080/geneSeq?gene=FRAT1
 
 * Input:
 
-
+http://localhost:8080/geneSeq?gene=
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
 
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
 
-
+</body>
+</html>
 
 -----------
-* TEST 2:
+* TEST 16:
 
 * Input:
 
-
+http://localhost:8080/geneSeq?gene=corona
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
 
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
 
+</body>
+</html>
 
 -----------
-* TEST 2:
+----------
+
+----> geneInfo endpoint
+
+* TEST 17:
 
 * Input:
 
-
+http://localhost:8080/geneInfo?gene=ADA
 
 * Output:
 
-
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gene information</title>
+</head>
+<body style="background-color: plum">
+</body></html>
+<b> The information of gene ADA is:  </b><p>The gene starts at: 44619522</p><p>The gene ends at: 44652233</p><p>The length of the gene is: 32711</p><p>The ID of the gene is: ENSG00000196839</p><p>The gene is in the chromosome: 20</p>
 
 
 -----------
-* TEST 2:
+* TEST 18:
 
 * Input:
 
-
+http://localhost:8080/geneInfo?gene=12
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+
+</body>
+</html>
+
+-----------
+* TEST 19:
+
+* Input:
+
+http://localhost:8080/geneInfo?gene=
+
+* Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+
+</body>
+</html>
 
 
 -----------
-* TEST 2:
+-----------
+
+----> geneCalc endpoint
+
+* TEST 20:
 
 * Input:
 
-
+http://localhost:8080/geneCalc?gene=krt8
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gene calculations</title>
+</head>
+<body style="background-color: palegreen">
+</body></html>
+<b> The calculations of gene krt8 are:  </b><p>Length of the gene is: 52768</p><p> The number of A in the gene is 12259 which is a
+    23.23 %<p> The number of C in the gene is 12945 which is a
+    24.53 %<p> The number of T in the gene is 13819 which is a
+    26.19 %<p> The number of G in the gene is 13745 which is a
+    26.05 %
 
+-----------
+* TEST 21:
 
+* Input:
 
+http://localhost:8080/geneCalc?gene=89
 
+* Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+
+</body>
+</html>
 
 
 -----------
-* TEST 2:
+* TEST 22:
 
 * Input:
 
-
+http://localhost:8080/geneCalc?gene=corona
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
 
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
 
-
-
-
+</body>
+</html>
 
 
 -----------
-* TEST 2:
+-----------
+
+----> geneList endpoint
+
+* TEST 23:
 
 * Input:
 
-
+http://localhost:8080/geneList?chromo=MT&start=0&end=30000
 
 * Output:
 
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gene list</title>
+</head>
+<body style="background-color: lightyellow">
+</body></html>
+<b>The list of genes of chromosome MT between the positions 0 and 30000
+is: </b><p>MT-TF<p>MT-RNR1<p>MT-TV<p>MT-RNR2<p>MT-TL1<p>MT-ND1<p>MT-TI<p>MT-TQ<p>MT-TM<p>MT-ND2<p>MT-TW<p>MT-TA<p>MT-TN<p>MT-TC<p>MT-TY<p>MT-CO1<p>MT-TS1<p>MT-TD<p>MT-CO2<p>MT-TK<p>MT-ATP8<p>MT-ATP6<p>MT-CO3<p>MT-TG<p>MT-ND3<p>MT-TR<p>MT-ND4L<p>MT-ND4<p>MT-TH<p>MT-TS2<p>MT-TL2<p>MT-ND5<p>MT-ND6<p>MT-TE<p>MT-CYB<p>MT-TT<p>MT-TP
 
 
 -----------
-* TEST 2:
+* TEST 24:
 
 * Input:
 
-
+http://localhost:8080/geneList?chromo=1&start=0&end=300000
 
 * Output:
 
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Gene list</title>
+</head>
+<body style="background-color: lightyellow">
+</body></html>
+<b>The list of genes of chromosome 1 between the positions 0 and 300000
+is: </b><p>DDX11L1<p>WASH7P<p>MIR6859-1<p>MIR1302-2HG<p>MIR1302-2<p>FAM138A<p>OR4G4P<p>OR4G11P<p>OR4F5<p>AL627309.1<p>AL627309.3<p>CICP27<p>AL627309.6<p>AL627309.7<p>AL627309.2<p>AL627309.5<p>RNU6-1100P<p>AL627309.4<p>FO538757.1<p>WASH9P<p>MIR6859-2<p>AP006222.1<p>AP006222.2
 
 
 -----------
-* TEST 2:
+* TEST 25:
 
 * Input:
 
-
+http://localhost:8080/geneList?chromo=none&start=0&end=300000
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
 
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
 
-
-
+</body>
+</html>
 
 
 -----------
-* TEST 2:
+* TEST 26:
 
 * Input:
 
-
+http://localhost:8080/geneList?chromo=12&start=0&end=no
 
 * Output:
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
 
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
 
-
-
-
-
-
+</body>
+</html>
 
 -----------
-* TEST 2:
+* TEST 27:
 
 * Input:
 
-
-
-* Output:
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
+http://localhost:8080/geneList?chromo=12&start=&end=30000
 
 * Output:
 
-
-
-
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
-
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
-
-
-
------------
-* TEST 2:
-
-* Input:
-
-
-
-* Output:
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ERROR</title>
+</head>
+
+<body style="background-color: salmon;">
+  <h1>ERROR</h1>
+  <p>Resource not available</p>
+  <a href="/">Main page</a>
+
+</body>
+</html>
